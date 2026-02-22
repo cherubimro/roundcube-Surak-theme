@@ -1,0 +1,206 @@
+/**
+ * Surak skin — Vulcan aesthetic overrides
+ *
+ * Austere, logical, geometric. Burnt orange meets steel blue —
+ * desert heat and cold logic. No scan-lines, no shimmer — logic prevails.
+ * Imported automatically via @import (optional) "_styles" in styles.less.
+ */
+
+// ---------------------------------------------------------------------------
+// Precise buttons — clean, geometric, measured
+// ---------------------------------------------------------------------------
+.btn:not(.btn-icon) {
+    border-radius: 3px;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    border: 1px solid fadeout(@color-main, 50%);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary:not(.btn-icon) {
+    border-color: darken(@color-main, 8%);
+
+    &:hover {
+        background-color: lighten(@color-main, 8%);
+        border-color: lighten(@color-main, 4%);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Orange border headers / footers — warm accent on cool surface
+// ---------------------------------------------------------------------------
+#layout > .header,
+#layout > div > .header {
+    border-bottom: 1px solid @color-main;
+    box-shadow: 0 1px 6px fadeout(@color-main, 80%);
+}
+
+#layout > .footer,
+#layout > div > .footer {
+    border-top: 1px solid @color-main;
+    box-shadow: 0 -1px 6px fadeout(@color-main, 80%);
+}
+
+// ---------------------------------------------------------------------------
+// Task menu — left border indicator, clean gradient sweep
+// ---------------------------------------------------------------------------
+#taskmenu {
+    a.button.selected {
+        border-left: 3px solid @color-main;
+        background: linear-gradient(90deg, fadeout(@color-main, 85%) 0%, transparent 100%);
+    }
+
+    a.button:hover {
+        background: linear-gradient(90deg, fadeout(@color-main, 88%) 0%, transparent 100%);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Blue focus glow — inputs get steel blue box-shadow on focus
+// ---------------------------------------------------------------------------
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus {
+    box-shadow: 0 0 0 2px fadeout(@color-link, 75%), 0 0 8px fadeout(@color-link, 70%) !important;
+    outline: none;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    box-shadow: 0 0 0 2px fadeout(@color-main, 60%), 0 0 10px fadeout(@color-main, 50%) !important;
+}
+
+// ---------------------------------------------------------------------------
+// Selected list items — subtle cool inset glow
+// ---------------------------------------------------------------------------
+.listing li.selected,
+table.listing tr.selected td,
+.messagelist tr.selected td {
+    box-shadow: inset 0 0 12px fadeout(@color-link, 88%);
+}
+
+// ---------------------------------------------------------------------------
+// Login page — cool dark gradient with warm radial accent
+// ---------------------------------------------------------------------------
+.task-login #layout-content {
+    background:
+        radial-gradient(ellipse at center, fadeout(@color-main, 92%) 0%, transparent 60%),
+        linear-gradient(to bottom, #0c0e14, #12141c);
+}
+
+.task-login #logo {
+    filter: drop-shadow(0 0 16px fadeout(@color-main, 50%));
+}
+
+#login-form {
+    background: fadeout(#0c0e14, 10%);
+    border: 1px solid fadeout(@color-link, 50%);
+    border-radius: 4px;
+    padding: 2rem 2.5rem;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 20px fadeout(#000, 50%), 0 0 30px fadeout(@color-link, 85%);
+
+    // Geometric double-line accent — IDIC-inspired precision
+    outline: 1px solid fadeout(@color-link, 75%);
+    outline-offset: 4px;
+}
+
+// ---------------------------------------------------------------------------
+// Email message body — dark cool background, force light text on HTML emails
+// ---------------------------------------------------------------------------
+#messagebody,
+.message-part,
+.message-htmlpart {
+    background-color: @color-layout-content-background;
+    color: @color-font;
+}
+
+.message-htmlpart div.rcmBody {
+    background-color: @color-layout-content-background !important;
+    color: @color-font !important;
+
+    // Force all inline-styled text to light color
+    * {
+        color: @color-font !important;
+        background-color: transparent !important;
+    }
+
+    // Preserve link visibility in blue
+    a, a * {
+        color: @color-link !important;
+    }
+
+    // Preserve colored blockquote levels
+    blockquote { color: lighten(@color-link, 12%) !important; }
+    blockquote blockquote { color: lighten(@color-success, 15%) !important; }
+    blockquote blockquote blockquote { color: lighten(@color-error, 15%) !important; }
+
+    // Let images render normally
+    img {
+        background-color: initial !important;
+    }
+}
+
+#messagecontframe {
+    background-color: @color-layout-content-background;
+}
+
+// ---------------------------------------------------------------------------
+// Toolbar subtle bottom border
+// ---------------------------------------------------------------------------
+.toolbar {
+    border-bottom: 1px solid fadeout(@color-main, 85%);
+}
+
+// ---------------------------------------------------------------------------
+// Links — clean, no underline
+// ---------------------------------------------------------------------------
+a {
+    text-decoration: none;
+}
+
+// ---------------------------------------------------------------------------
+// Scrollbar styling for webkit — cool grey
+// ---------------------------------------------------------------------------
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: @color-scrollbar-track;
+}
+
+::-webkit-scrollbar-thumb {
+    background: @color-scrollbar-thumb;
+    border-radius: 4px;
+
+    &:hover {
+        background: lighten(@color-scrollbar-thumb, 8%);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Mobile — simplify layout, clean borders
+// ---------------------------------------------------------------------------
+@media screen and (max-width: 768px) {
+    .btn:not(.btn-icon) {
+        border-radius: 3px;
+    }
+
+    #login-form {
+        border-radius: 3px;
+        padding: 1.5rem;
+        outline: none;
+    }
+
+    // Task menu indicator on mobile — bottom border
+    #taskmenu a.button.selected {
+        border-left: none;
+        border-bottom: 3px solid @color-main;
+    }
+}
