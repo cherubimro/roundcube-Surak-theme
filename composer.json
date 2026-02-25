@@ -1,0 +1,16 @@
+{
+    "name": "cherubimro/roundcube-surak-theme",
+    "description": "A Vulcan-themed dark skin for Roundcube Webmail based on Elastic",
+    "license": "CC-BY-SA-4.0",
+    "type": "roundcube-skin",
+    "homepage": "https://github.com/cherubimro/roundcube-Surak-theme",
+    "authors": [
+        {
+            "name": "Alin-Adrian Anton",
+            "email": "alin.anton@upt.ro"
+        }
+    ],
+    "require": {
+        "roundcube/plugin-installer": ">=0.3.0"
+    }
+}
